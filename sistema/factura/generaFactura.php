@@ -1,24 +1,25 @@
 <?php
+
 	session_start();
 	if(empty($_SESSION['active']))
 	{
-		header('location: ../');
+		header('location: ../index.php');
 	}
 
-	include "../../conexion.php";
+	include "../../conexion/conexion.php";
 	if(empty($_REQUEST['cl']) || empty($_REQUEST['f']))
 	{
 		echo "No es posible generar la factura.";
 	}else{
 		$codCliente = $_REQUEST['cl'];
 		$noFactura = $_REQUEST['f'];
-		$consulta = mysqli_query($conexion, "SELECT * FROM configuracion");
+		$consulta = mysqli_query($conn, "SELECT * FROM configuracion");
 		$resultado = mysqli_fetch_assoc($consulta);
-		$ventas = mysqli_query($conexion, "SELECT * FROM factura WHERE nofactura = $noFactura");
+		$ventas = mysqli_query($conn, "SELECT * FROM factura WHERE nofactura = $noFactura");
 		$result_venta = mysqli_fetch_assoc($ventas);
 		//$clientes = mysqli_query($conexion, "SELECT * FROM cliente WHERE idcliente = $codCliente");
 		//$result_cliente = mysqli_fetch_assoc($clientes);
-		$productos = mysqli_query($conexion, "SELECT d.nofactura, d.codproducto, d.cantidad, p.codproducto, p.descripcion, p.precio FROM detallefactura d INNER JOIN producto p ON d.nofactura = $noFactura WHERE d.codproducto = p.codproducto");
+		$productos = mysqli_query($conn, "SELECT d.nofactura, d.codproducto, d.cantidad, p.codproducto, p.descripcion, p.precio FROM detallefactura d INNER JOIN producto p ON d.nofactura = $noFactura WHERE d.codproducto = p.codproducto");
 		require_once 'fpdf/fpdf.php';
 		$pdf = new FPDF('P', 'mm', array(80, 200));
 		$pdf->AddPage();

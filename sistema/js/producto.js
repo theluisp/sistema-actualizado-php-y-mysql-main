@@ -294,7 +294,7 @@ $('#add_product_venta').click(function(e) {
           $('#txt_cod_producto').val('');
           $('#txt_cod_pro').val('');
           $('#txt_descripcion').html('-');
-          $('#txt_existencia').html('-');
+          $('#txt_existencia').html('dd');
           $('#txt_cant_producto').val('0');
           $('#txt_precio').html('0.00');
           $('#txt_precio_total').html('0.00');

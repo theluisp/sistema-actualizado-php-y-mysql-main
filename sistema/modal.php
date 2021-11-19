@@ -1,7 +1,10 @@
+<?php
+include("../conexion.php"); 
+session_start();
+
+?>
 
 <?php
-include("../conexion.php");
-session_start();
 //print_r($_POST);
 if (!empty($_POST)) {
   // Extraer datos del producto
@@ -103,18 +106,26 @@ if ($_POST['action'] == 'addProductoDetalle') {
             <td>'.$data['codproducto'].'</td>
             <td colspan="2">'.$data['descripcion'].'</td>
             <td class="textcenter">'.$data['cantidad'].'</td>
-            <td class="textright">'.$data['precio_venta'].'</td>
-            <td class="textright">'.$precioTotal.'</td>
+            <td class="textright">'.'$'.$data['precio_venta'].'</td>
+            <td class="textright">'.'$'.$precioTotal.'</td>
             <td>
                 <a href="#" class="btn btn-danger" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');"><i class="fas fa-trash-alt"></i> Eliminar</a>
             </td>
-        </tr>';
+        </tr>
+		
+		
+		';
     }
     $total = round($sub_total, 2);
+		
     $detalleTotales ='<tr>
-        <td colspan="5" class="textright">Total S/.</td>
-        <td class="textright">'.$total.'</td>
-    </tr>';
+        <td colspan="5" class="textright">TOTAL A PAGAR.</td>
+        <td class="textright">'.'$'.$total.'</td>
+    </tr>
+	<br> <h1>jajaj</h1>
+	';
+	$_SESSION['totall']=$total;
+	
     $arrayData['detalle'] = $detalleTabla;
     $arrayData['totales'] = $detalleTotales;
     echo json_encode($arrayData,JSON_UNESCAPED_UNICODE);
@@ -164,21 +175,24 @@ if ($_POST['action'] == 'searchForDetalle') {
             <td>'.$data['codproducto'].'</td>
             <td colspan="2">'.$data['descripcion'].'</td>
             <td class="textcenter">'.$data['cantidad'].'</td>
-            <td class="textright">'.$data['precio_venta'].'</td>
-            <td class="textright">'.$precioTotal.'</td>
+            <td class="textright">'.'$'.$data['precio_venta'].'</td>
+            <td class="textright">'.'$'.$precioTotal.'</td>
             <td>
                 <a href="#" class="link_delete" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');"><i class="fas fa-trash-alt"></i> Eliminar</a>
             </td>
         </tr>';
     }
     $total = round($sub_total, 2);
-    
+    	
+
 
     $detalleTotales = '<tr>
-        <td colspan="5" class="textright">Total S/.</td>
-        <td class="textright">'.$total.'</td>
-    </tr>';
-
+        <td colspan="5" class="textright">TOTAL A PAGAR.</td>
+        <td class="textright">'.'$'.$total.' MXN'.'</td>
+		
+    </tr> 	
+';
+$_SESSION['totall']=$total;
     $arrayData['detalle'] = $detalleTabla;
     $arrayData['totales'] = $detalleTotales;
 
@@ -229,8 +243,8 @@ if ($_POST['action'] == 'delProductoDetalle') {
             <td>'.$data['codproducto'].'</td>
             <td colspan="2">'.$data['descripcion'].'</td>
             <td class="textcenter">'.$data['cantidad'].'</td>
-            <td class="textright">'.$data['precio_venta'].'</td>
-            <td class="textright">'.$precioTotal.'</td>
+            <td class="textright">'.'$'.$data['precio_venta'].'</td>
+            <td class="textright">'.'$'.$precioTotal.'</td>
             <td>
                 <a href="#" class="link_delete" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');">Eliminar</a>
             </td>
@@ -239,12 +253,15 @@ if ($_POST['action'] == 'delProductoDetalle') {
     $impuesto = round($sub_total / $iva, 2);
     $tl_sniva = round($sub_total - $impuesto, 2);
     $total = round($tl_sniva + $impuesto, 2);
+	
 
     $detalleTotales = '<tr>
-        <td colspan="5" class="textright">Total S/.</td>
+        <td colspan="5" class="textright">TOTAL A PAGAR</td>
         <td class="textright">'.$total.'</td>
-    </tr>';
-
+    </tr> 
+		<br> <h1>jajaj</h1>
+';
+$_SESSION['totall']=$total;
     $arrayData['detalle'] = $detalleTabla;
     $arrayData['totales'] = $detalleTotales;
 

@@ -1,7 +1,7 @@
 <?php
 $user="root";
 $server="localhost";
-$bd="estanteria2";
+$bd="sis_venta";
 $password="mysql";
 
 $conn=mysqli_connect($server, $user, $password, $bd);

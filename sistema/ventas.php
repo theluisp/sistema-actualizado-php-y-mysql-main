@@ -1,22 +1,26 @@
 <?php include_once "includes/header.php"; ?>
 
+<?php  include '../includes/navbar3.php'; ?>
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" >
 
 	<!-- Page Heading -->
+<br>
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
-		<h1 class="h3 mb-0 text-gray-800">Panel de Administración</h1>
+		<h1 align="center" class="mx-auto" >Mis ventas realizadas</h1>
 	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="table-responsive">
-				<table class="table table-striped table-bordered" id="table">
+	
+	
+	<div class="row" >
+		<div class="col-lg-12" >
+			<div class="table-responsive" align="center">
+				<table class="table" id="table">
 					<thead class="thead-dark">
 						<tr>
-							<th>Id</th>
+							<th>Codigo identificador de venta</th>
 							<th>Fecha</th>
 							<th>Total</th>
-							<th>Acciones</th>
+							<th>Comprobante de pago</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,7 +38,9 @@
 									<td><?php echo $dato['fecha']; ?></td>
 									<td><?php echo $dato['totalfactura']; ?></td>
 									<td>
-										<button type="button" class="btn btn-primary view_factura" cl="<?php echo $dato['codcliente'];  ?>" f="<?php echo $dato['nofactura']; ?>">Ver</button>
+										<button type="button" class="btn btn-primary view_factura" cl="<?php echo $dato['codcliente'];  ?>" f="<?php echo $dato['nofactura']; ?>">Ver  <i class="fa fa-file" aria-hidden="true"></i>
+
+</button>
 									</td>
 								</tr>
 						<?php }
@@ -49,5 +55,10 @@
 
 </div>
 <!-- /.container-fluid -->
-
-<?php include_once "includes/footer.php"; ?>
+<br><br><br><br><br>
+<div style="
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  "><?php include_once "includes/footer.php"; ?></div>

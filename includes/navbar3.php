@@ -61,14 +61,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <body>
 
 <div class="topnav"  id="myTopnav">
-  <a class="active" href="../vendedor/index_vendedor.php"><i class="fa fa-fw fa-home"></i>Productos metálicos LEYVA</a>
+  <a class="active" href="../vendedor/index_vendedor.php"><i class="fa fa-fw fa-home"></i>Nombre empresa</a>
   <a href="../registrar_producto_vendedor.php"><i class="fa fa-plus" aria-hidden="true"></i>
  Nueva mercancia</a>
-  <a  href="../sistema/nueva_venta.php"><i class="fa fa-money" aria-hidden="true"></i>
+  <a  href="registrar_producto_vendedor.php"><i class="fa fa-money" aria-hidden="true"></i>
 Vender</a>
    <a href="#vender.php"><i class="fa fa-list-alt" aria-hidden="true"></i>
 
-Consultar ventas</a>
+Consultar mis ventas</a>
+	
+	<a href="../registrar_producto_vendedor.php"><i class="fa fa-users" aria-hidden="true"></i>
+ Consultar clientes</a>
+	
    <a  href="#"><i class="fa fa-trash" aria-hidden="true"></i>
 
 Eliminar venta</a>
