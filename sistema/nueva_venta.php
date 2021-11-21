@@ -13,8 +13,9 @@
                 var num2 = document.getElementById("num2").value;
  
                 var resultado = parseFloat(num2) - parseFloat(num1);
- 
-                 document.getElementById('spTotal').innerHTML = resultado;
+ var conDecimal = resultado.toFixed(2); 
+
+                 document.getElementById('spTotal').innerHTML = conDecimal;
             }
  
         </script>

@@ -1,6 +1,8 @@
 <?php
 
 	session_start();
+
+$atendio=$_SESSION['vendedor'];
 	if(empty($_SESSION['active']))
 	{
 		header('location: ../index.php');
@@ -30,7 +32,7 @@
 		$pdf->Ln();
 		$pdf->image("img/logo.jpg", 50, 18, 15, 15, 'JPG');
 		$pdf->SetFont('Arial', 'B', 7);
-		$pdf->Cell(15, 5, "Ruc: ", 0, 0, 'L');
+		$pdf->Cell(15, 5, "RFC: ", 0, 0, 'L');
 		$pdf->SetFont('Arial', '', 7);
 		$pdf->Cell(20, 5, $resultado['dni'], 0, 1, 'L');
 		$pdf->SetFont('Arial', 'B', 7);
@@ -42,16 +44,23 @@
 		$pdf->SetFont('Arial', '', 7);
 		$pdf->Cell(20, 5, utf8_decode($resultado['direccion']), 0, 1, 'L');
 		$pdf->SetFont('Arial', 'B', 7);
-		$pdf->Cell(15, 5, "Ticked: ", 0, 0, 'L');
+		$pdf->Cell(15, 5, "Ticket no: ", 0, 0, 'L');
 		$pdf->SetFont('Arial', '', 7);
 		$pdf->Cell(20, 5, $noFactura, 0, 0, 'L');
 		$pdf->SetFont('Arial', 'B', 7);
 		$pdf->Cell(16, 5, "Fecha: ", 0, 0, 'R');
 		$pdf->SetFont('Arial', '', 7);
 		$pdf->Cell(25, 5, $result_venta['fecha'], 0, 1, 'R');
+		
 		$pdf->SetFont('Arial', 'B', 7);
-		$pdf->Cell(60, 5, "Datos del cliente", 0, 1, 'L');
-		$pdf->Cell(40, 5, "Nombre", 0, 0, 'L');
+		$pdf->Cell(15, 5, "Le atendio: ", 0, 0, 'L');
+		$pdf->SetFont('Arial', '', 7);
+		$pdf->Cell(13, 5, $atendio, 0, 1, 'R');
+		
+		
+		$pdf->SetFont('Arial', 'B', 7);
+		$pdf->Cell(60, 20, "Datos del cliente", 0, 1, 'L');
+		$pdf->Cell(40, 2, "Nombre:", 0, 0, 'L');
 		$pdf->Cell(20, 5, utf8_decode("Teléfono"), 0, 0, 'L');
 		$pdf->Cell(25, 5, utf8_decode("Dirección"), 0, 1, 'L');
 		$pdf->SetFont('Arial', '', 7);
@@ -82,8 +91,8 @@
 		}
 		$pdf->Ln();
 		$pdf->SetFont('Arial', 'B', 10);
-
-		$pdf->Cell(76, 5, 'Total: ' . number_format($result_venta['totalfactura'], 2, '.', ','), 0, 1, 'R');
+        $total=$result_venta['totalfactura'];
+		$pdf->Cell(76, 5, 'Total: $' . number_format($total, 2, '.', ','), 0, 1, 'R');
 		$pdf->Ln();
 		$pdf->SetFont('Arial', '', 7);
 		$pdf->Cell(80, 5, utf8_decode("Gracias por su preferencia"), 0, 1, 'C');

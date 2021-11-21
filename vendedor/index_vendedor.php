@@ -73,7 +73,7 @@ error_reporting(0);
      <div class="container">
          
          <br>
-         <h1 class="text-uppercase mb-0">Bienvenido a la sección de punto de venta usuario: <?php echo $_SESSION['vendedor'];?> </h1>
+         <h1 class="text-uppercase mb-0">Bienvenido a la sección de punto de venta usuario: <?php echo $_SESSION['vendedor']; ?> </h1>
          <br />
      </div>
      <br>

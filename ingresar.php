@@ -55,8 +55,10 @@ $result = $conn->query($query);
     if($result->num_rows>0){
 	 while($row=$result->fetch_assoc()) {
     if (password_verify($pass, $row['contrasenia'])) {
-     $_SESSION['vendedor']=$row['nombres']; 
-	
+    $_SESSION['vendedor']=$row['nombres']; 
+	$_SESSION['active'] = true;
+        
+	$_SESSION['idUser'] = $row['idusuario'];
 	$_SESSION['sucursal']=$row['nombre_sucursal'];
 	 
             ?> <script>
